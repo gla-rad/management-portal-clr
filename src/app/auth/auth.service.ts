@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Role } from '../backend-api/identity-registry';
 import { ItemManagerService } from '../common/shared/item-manager.service';
 import RoleNameEnum = Role.RoleNameEnum;
+import { AppConfig } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class AuthService {
   public async login() {
     const url = window.location;
     await this.keycloakService.login({
-        redirectUri: url.protocol + '//' + url.host + '/pages'
+        redirectUri: url.protocol + '//' + url.host + AppConfig.APP_BASE_HREF + '/pages'
     });
 
     // Check authentication status after login
@@ -37,7 +38,7 @@ export class AuthService {
 
   public async logout() {
     const url = window.location;
-    await this.keycloakService.logout(url.protocol + '//' + url.host + '/login');
+    await this.keycloakService.logout(url.protocol + '//' + url.host + AppConfig.APP_BASE_HREF + '/login');
     this.itemManagerService.clearRolesContext();
   }
 

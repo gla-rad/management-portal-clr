@@ -41,6 +41,7 @@ export class AppConfig {
     static FOOTER_NAME: string;
     static FOOTER_LINK: string;
     static LOGO_IMG: string;
+    static APP_BASE_HREF: string;
 
     public static _initialize() {
         AppConfig.IR_BASE_PATH = environment.irBasePath.replace(/\/$/, '');
@@ -64,6 +65,7 @@ export class AppConfig {
         AppConfig.FOOTER_NAME = environment.footerName;
         AppConfig.FOOTER_LINK = environment.footerLink;
         AppConfig.LOGO_IMG = environment.logoImg;
+        AppConfig.APP_BASE_HREF = environment.appBaseHref === undefined || environment.appBaseHref === null ? "/" : environment.appBaseHref;
     }
 }
 

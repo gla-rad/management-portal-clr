@@ -36,4 +36,5 @@ export const environment = {
   footerName: 'Maritime Connectivity Platform Consortium',
   footerLink: 'https://maritimeconnectivity.net',
   logoImg: 'assets/images/logo.svg',
+  appBaseHref: ''
 };

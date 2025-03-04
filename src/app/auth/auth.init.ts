@@ -30,7 +30,7 @@ export const initializeKeycloak = (keycloak: KeycloakService) => {
             bearerPrefix: 'Bearer',
             initOptions: {
                 onLoad: 'check-sso',
-                silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html',
+                silentCheckSsoRedirectUri: window.location.origin + AppConfig.APP_BASE_HREF + '/assets/silent-check-sso.html',
                 checkLoginIframe: false,
             }
         });
