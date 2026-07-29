@@ -75,9 +75,11 @@ export class ItemFormComponent {
 
   @Input() isVerified = false;
 
-  @Input() hasWritePermission = false;
+  @Input() hasEditPermission = false;
 
   @Input() roles: Role[] = [];
+
+  @Input() keysToFilter: string[] = [];
 
   @Output() cancelEvent: EventEmitter<any> = new EventEmitter<any>();
 
@@ -112,7 +114,7 @@ export class ItemFormComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     if (this.itemType === ItemType.OrgCandidate) {
-      this.hasWritePermission = true;
+      this.hasEditPermission = true;
     }
     this.prepareItem(this.itemType);
   }
@@ -305,6 +307,9 @@ export class ItemFormComponent {
   setForm = () => {
     let formElements: { [key: string]: any } = {};
     Object.entries(ColumnForResource[this.itemType.toString()]).map(([key, value]) => {
+      if (this.keysToFilter.length > 0 && this.keysToFilter.includes(key)) {
+        return;
+      }
       if (!value.visibleFrom)
         return;
       if (value.visibleFrom && !value.visibleFrom.includes(this.viewContext))

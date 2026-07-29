@@ -11,9 +11,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 You can experience a live demo from [our public demonstrator environment](https://management.maritimeconnectivity.net).
 
 # Development
-## Requirement
-- node v20.17.0
-- pnpm v8.15.4
+## Requirements
+- node v20.17.0+
+- pnpm v9.7.0+
+- Go 1.24+
+
+## Building the Go WASM module
+The Go WASM module, which is used for generating public/private key-pairs, certificate signing request and PKCS#12 keystores, can be built by running `pnpm run build:go`.
+
+This needs to be done before performing any of the following actions.
 
 ## Development server
 
@@ -56,6 +62,7 @@ You can use configuration by using `-c %CONF_NAME%`. Building with test configur
 
 ## Build
 
+You need to build the Go WASM module first to proceed.
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
@@ -66,8 +73,9 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## GitHub deployment
+## GitHub Pages deployment
 
+You need to build the Go WASM module first to proceed.
 Run `ng deploy --repo=%REPO_TO_DEPLOY% --cname=%URL --dir="dist/management-portal-clr"` for GitHub Pages deployment
 
 ## Localization support
