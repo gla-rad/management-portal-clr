@@ -47,5 +47,5 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: docker
-          tags: ghcr.io/maritimeconnectivity/management-portal-clr
+          tags: ghcr.io/glarad/management-portal-clr
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}

@@ -37,4 +37,4 @@ jobs:
           git config --global user.name "GhPages Deploy Bot"
           git config --global user.email "jinki+gh_deploy@dmc.international"
           pnpm run build:go
-          ng deploy -c test --repo=https://github.com/maritimeconnectivity/test-management-portal-pages --cname=test-management.maritimeconnectivity.net --dir="dist/management-portal-clr"
+          ng deploy -c test --repo=https://github.com/glarad/test-management-portal-pages --cname=test-mcp.gla-rad.prg --dir="dist/management-portal-clr"
