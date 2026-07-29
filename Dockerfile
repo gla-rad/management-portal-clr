@@ -13,11 +13,22 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-l
 
 # Stage 3: Now build for production
 FROM base AS build
+
+# The WASM module is compiled during the build (see the prebuild/build:go npm
+# scripts), so the go toolchain is required here. It is lifted off the official
+# image, as Debian's own golang package is too old for go/go.mod, along with
+# the CA bundle that node:20-slim omits, since unlike node, go verifies the
+# module proxy against the system trust store.
+COPY --from=golang:1.26-bookworm /usr/local/go /usr/local/go
+COPY --from=golang:1.26-bookworm /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+ENV PATH="/usr/local/go/bin:$PATH"
+ENV GOPATH="/go"
+
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
-# Stage 2: Create a production image
-FROM nginx:alpine AS final
+# Stage 4: Create a production image
+FROM nginx:mainline-alpine AS final
 
 # Copy the dependency and build files
 COPY --from=prod-deps /app/node_modules /usr/share/nginx/html/node_modules

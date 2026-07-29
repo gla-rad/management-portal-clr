@@ -52,6 +52,7 @@ export const environment = {
     // @ts-ignore
     mpName: window["env"]["management_portal_name"] || 'MCC MCP Testbed',
     environmentName: 'public-demonstrator',
+    mpYear: '2025',
     footerName: 'Maritime Connectivity Platform Consortium',
     footerLink: 'https://maritimeconnectivity.net',
     logoImg: 'assets/images/logo.svg',
