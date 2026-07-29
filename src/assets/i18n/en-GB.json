@@ -209,12 +209,15 @@
     "error": {
         "selection": {
             "noSelection": "You need to select at least one item",
-            "wrongtype": "You choose wrong type"
+            "notMigrated": "You need to migrate the service first"
         },
         "form": {
             "invalid": "Please fill in all required fields",
             "invalidmrn": "Please enter a valid MRN",
             "requiremigrate" :"You need to migrate the service first"
+        },
+        "user": {
+            "emailConflict": "The email address is already in use for organization"
         },
         "xml" :{
             "emptyXml": "The XML form is empty",
